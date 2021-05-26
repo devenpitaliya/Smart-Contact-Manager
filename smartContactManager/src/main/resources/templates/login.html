@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+
+
+<head>
+<meta charset="ISO-8859-1">
+<title>this is homepage</title>
+</head>
+<body>
+
+<section>
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img class="pt-3" src="https://www.seekpng.com/png/full/138-1387775_login-to-do-whatever-you-want-login-icon.png" id="icon" alt="Login" />
+    </div>
+  
+    <div th:if="${param.error}" class="alert alert-danger " >
+    Invalid username and password
+    </div>
+    
+    <div th:if="${param.logout}" class="alert alert-success " >
+    You have been logout
+    </div>
+    
+      <div th:if="${param.change}" class="alert alert-success " >
+   <p th:text="${param.change}" ></p>
+    </div>
+    
+    
+    
+
+    <!-- Login Form -->
+    <form  th:action="@{/dologin}" method="post" >
+      <input type="text" id="username" class="fadeIn second" name="username" placeholder="username">
+      <input type="password" id="password" class="fadeIn third" name="password" placeholder="password">
+      <input type="submit" name="submit" value="submit" class="fadeIn fourth" >
+      <div id="formFooter">
+      <a class="underlineHover" href="/signup/">Register Here</a>
+    </div>
+      
+    </form>
+
+    <!-- forget Passowrd -->
+    <div id="formFooter">
+      <a th:href="@{/forget}" class="underlineHover" href="">Forgot Password ?</a>
+    </div>
+
+  </div>
+</div>
+
+</section>
+
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+
+
+<head>
+<meta charset="ISO-8859-1">
+<title>this is homepage</title>
+</head>
+<body>
+
+<section>
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img class="pt-3" src="https://www.seekpng.com/png/full/138-1387775_login-to-do-whatever-you-want-login-icon.png" id="icon" alt="Login" />
+    </div>
+  
+    <div th:if="${param.error}" class="alert alert-danger " >
+    Invalid username and password
+    </div>
+    
+    <div th:if="${param.logout}" class="alert alert-success " >
+    You have been logout
+    </div>
+    
+
+    
+    <!-- email form -->
+    <div class="alert alert-success mt-3" role="alert">
+  We have Send OTP to Your Email 
+</div>
+
+ <!-- message box -->
+    
+    <div th:if="${session.message}" class="container text-center">
+	
+	    <div class="alert alert-danger my-2text-center" role="alert">
+    
+    <span th:text="${session.message}" ></span>
+
+    </div>
+	
+<th:block th:text="${#session.removeAttribute('message')}"></th:block>	
+	</div>
+
+
+    
+    
+    
+    <form th:action="@{/verify-otp}" method="post">
+    
+    <div class="form-group">
+    
+    <input name="otp" required="required" type="text" placeholder="Enter OTP here" class="form-control" />
+    
+    
+    
+    </div>
+    
+    <div class="container text-center">
+    
+    <button class="btn btn-success m-3" >Verify</button>
+    
+    </div>
+    
+    </form>
+
+
+
+
+
+  </div>
+</div>
+
+</section>
+
+</body>
+</html>
